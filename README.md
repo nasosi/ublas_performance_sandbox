@@ -9,6 +9,7 @@ qmake
 make
 
 or:
+
 g++ -DNDEBUG -O3 -std=c++0x main.cpp -o benchmark
 
 run with ./benchmark
