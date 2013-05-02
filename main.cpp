@@ -296,15 +296,6 @@ protected:
 
 };
 
-class ublas_noalias: public ublas_base  {
-public:
-    ublas_noalias(std::size_t s): ublas_base(s) { }
-    std::string name() const { return "ublas noalias"; }
-        int doit() {
-            boost::numeric::ublas::noalias(this->A) += 2.54343*this->B;
-        return -1;
-    }
-};
 
 class ublas_axpy: public ublas_base  {
 public:
@@ -443,7 +434,7 @@ int main(int /*argc*/, char **/*argv*/) {
     std::cout << std::numeric_limits<std::size_t>::max() << std::endl;
     omp_set_num_threads(2);
 
-    std::cout << eigen3(256).sample_output() << ", " << ublas_base(256).sample_output()<< ", " << ublas_noalias(256).sample_output()<< ", " << ublas_axpy(256).sample_output() <<  " " << ublas_axpy2(256).sample_output() << " " << ublas_paxpy(256, 4).sample_output() << std::endl;
+    std::cout << eigen3(256).sample_output() << ", " << ublas_base(256).sample_output()<< ", " <<  ", " << ublas_axpy(256).sample_output() <<  " " << ublas_axpy2(256).sample_output() << " " << ublas_paxpy(256, 4).sample_output() << std::endl;
 
     std::size_t start = 5;
     std::size_t end =   14;
@@ -453,7 +444,6 @@ int main(int /*argc*/, char **/*argv*/) {
         tests ts(size);
         ts.runTest(eigen3(size), 100000) ;
         ts.runTest(ublas_base(size), 100000) ;
-        ts.runTest(ublas_noalias(size), 100000) ;
         ts.runTest(ublas_axpy(size), 100000) ;
         ts.runTest(ublas_axpy2(size), 100000) ;
         for (int i=1; i<= omp_get_num_procs()/2; i++) {
@@ -467,7 +457,6 @@ int main(int /*argc*/, char **/*argv*/) {
     tests ts(size);
     ts.runTest(eigen3(size), 100000) ;
     ts.runTest(ublas_base(size), 100000) ;
-    ts.runTest(ublas_noalias(size), 100000) ;
     ts.runTest(ublas_axpy(size), 100000) ;
     ts.runTest(ublas_axpy2(size), 100000) ;
     for (int i=1; i<= omp_get_num_procs()/2; i++) {
@@ -475,22 +464,6 @@ int main(int /*argc*/, char **/*argv*/) {
         ts.runTest(ublas_paxpy(size, i), 100000);
     }
     ts.print_results();
-
-    //    std::vector<double> elapsed;
-/*
-        elapsed.push_back( runTest(eigen3(size), 100000) );
-        elapsed.push_back( runTest(ublas_base(size), 100000) );
-        elapsed.push_back( runTest(ublas_axpy(size), 100000) );
-        elapsed.push_back( runTest(ublas_axpy2(size), 100000) );
-        for (std::size_t i=1; i<= omp_get_num_procs(); i++) {
-            omp_set_num_threads(i);
-            elapsed.push_back( runTest(ublas_paxpy(size), 100000) );
-        }*/
-
-        //print_results(size, elapsed);
-   // }
-
-
 
 
 
