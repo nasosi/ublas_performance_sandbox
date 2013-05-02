@@ -6,10 +6,11 @@ A sandbox repo for ublas performance experiments.
 To compile:
 
 qmake
+
 make
 
 or:
 
-g++ -DNDEBUG -O3 -std=c++0x main.cpp -o benchmark
+g++ -DNDEBUG -O3 -std=c++0x main.cpp -o benchmarks
 
-run with ./benchmark
+run with ./benchmarks
