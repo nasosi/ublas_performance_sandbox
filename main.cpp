@@ -1,4 +1,5 @@
- 
+//    This is an ublas benchmark sandbox program
+//
 //    Copyright (C) 2013  Athanasios Iliopoulos
 //    Copyright (C) 2013  David Bellot
 //    Copyright (C) 2013  Sathyam M Vellal
